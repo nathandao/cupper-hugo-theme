@@ -1,0 +1,16 @@
+<ul class="patterns-list">
+  {{ range .Site.RegularPages.ByPublishDate.Reverse }}
+  <li>
+    <h2>
+      <a href="{{ .Permalink }}">
+        {{ .Title }}
+      </a>
+    </h2>
+    <div class="date">
+      {{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+      {{ $publishDate := .PublishDate }}
+      <strong aria-hidden="true"></strong>{{ $publishDate.Format $dateFormat }}
+    </div>
+  </li>
+  {{ end }}
+</ul>
